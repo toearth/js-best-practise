@@ -4,6 +4,7 @@ The result is based on [jsben](http://jsben.ch/browse).
 During the test, I got different result in different result, in one benchmark. Some times the chart even has some error.
 
 worng result
+
 ![](img/C8227164-B8C0-4E65-B0B8-A1962B0E4E58.png)
 
 ##### Array grouping
