@@ -7,7 +7,7 @@ worng result
 
 ![](img/C8227164-B8C0-4E65-B0B8-A1962B0E4E58.png)
 
-##### Array grouping
+##### 1. Array grouping
 
 use reduce [link](http://jsben.ch/hVhEV)
 
@@ -39,7 +39,7 @@ var result = Object.keys(groups) === 4;
 ```
 ![](img/C40D36AC-7E9F-48C9-BE89-7F1D5158FDE5.png)
 
-##### check object key
+##### 2. check object key
 use in or hasOwnProperty [link](http://jsben.ch/WqlIl)
 
 ```js
@@ -58,7 +58,7 @@ if (testObj.hasOwnProperty("key")) {
 ```
 ![](img/0590FE53-F2C4-4C5D-90E3-5B1CC07EC697.png)
 
-##### is string in string. indexOf vs. regex vs. match vs. includes vs. search vs. lodash includes
+##### 3. is string in string. indexOf vs. regex vs. match vs. includes vs. search vs. lodash includes
 
 use includes (ES6) [link](http://jsben.ch/RVYk7)
 
@@ -71,7 +71,7 @@ var test = str.includes(needle);
 ```
 ![](img/34251905-74AE-49CC-AA61-0C2A76913F81.png)
 
-##### copy / clone Array
+##### 4. copy / clone Array
 
 use slice or contanc [link](http://jsben.ch/wQ9RU)
 
@@ -84,7 +84,7 @@ var obj2 = [].concat(testArray);
 ```
 ![](img/520A4CFF-6CFF-422D-8ED1-245EBC174356.png)
 
-##### empty an array (length, pop, splice, shift)
+##### 5. empty an array (length, pop, splice, shift)
 
 use length = 0 or new init [link](http://jsben.ch/hyj65)
 
@@ -99,7 +99,7 @@ testArray = [];
 ![](img/36AF8A85-2AA8-4FE0-898D-1591477225E6.png)
 
 
-##### check if var is array
+##### 6. check if var is array
 
 use isArray or cunstructor  [link](http://jsben.ch/wQ9RU)
 
@@ -116,6 +116,44 @@ if (testArray.constructor === Array) result = true;
 if (testVar.constructor === Array) result = true;
 ```
 ![](img/BC912346-3C44-4737-8DC3-16A67373483C.png)
+
+##### jquery vs createElement
+
+use document.createElement  [link](http://jsben.ch/ARUtz)
+
+```js
+var test = $(document.createElement('span'));
+```
+![](img/B05A619D-7A57-4B06-9F30-C1D15B1A8EA8.png)
+
+##### replace all
+
+use regex [link](http://jsben.ch/LFfWA)
+
+```js
+String.prototype.replaceAll_1 = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+
+String.prototype.replaceAll_2 = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
+var replaced = testString.replaceAll_1('abc', '123');
+
+```
+![](img/6B91D383-4A54-4F84-A760-BEF540578115.png)
+
+##### 
+
+use [link](http://jsben.ch/wQ9RU)
+
+```js
+
+```
+![](img/.png)
 
 ##### 
 
