@@ -1,7 +1,8 @@
 # js-best-practise
-The result is based on [jeben](http://jsben.ch/browse).
+The result is based on [jsben](http://jsben.ch/browse).
 
-During the test, I got different result in different result, in one benchmark.Some times the chart even has some error.
+During the test, I got different result in different result, in one benchmark. Some times the chart even has some error.
+
 worng result
 ![](img/C8227164-B8C0-4E65-B0B8-A1962B0E4E58.png)
 
@@ -24,6 +25,8 @@ for (var i = 0; i < 1000; i++) {
 
     groupable.push(obj);
 }
+
+var groups = {};
 
 groupable.reduce(function (obj, item) {
     (obj[item[keyPropertyName]] = obj[item[keyPropertyName]] || []).push(item);
@@ -54,35 +57,79 @@ if (testObj.hasOwnProperty("key")) {
 ```
 ![](img/0590FE53-F2C4-4C5D-90E3-5B1CC07EC697.png)
 
-##### JS loop
+##### is string in string. indexOf vs. regex vs. match vs. includes vs. search vs. lodash includes
+
+use includes (ES6) [link](http://jsben.ch/RVYk7)
+
+```js
+var str = "nasd.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.n.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8snasd.hellon.kasdkskdnfkjsdfkjhsdfiuhsdfiusadfiuhsdfiöhsdifhsäodfjiosdfisdfsdfnosdfiosdf89sdfs98pdfzp98sdf98psfzp8sfzp8sfzp89szfp8s";
+var needle = "hello";
+var needleRegex = /hello/;
+
+var test = str.includes(needle);  
+```
+![](img/34251905-74AE-49CC-AA61-0C2A76913F81.png)
+
+##### copy / clone Array
+
+use slice or contanc [link](http://jsben.ch/wQ9RU)
+
+```js
+var testArray = [29, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927, 2625, 63, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927, 2625, 63, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927, 2625, 63, 27, 28, 838, 22, 2882, 2, 93, 84, 74, 7, 933, 3754, 3874, 22838, 38464, 3837, 82424, 2927, 2625, 63];
+
+var obj2 = testArray.slice();
+var obj2 = [].concat(testArray);
+
+```
+![](img/520A4CFF-6CFF-422D-8ED1-245EBC174356.png)
+
+##### empty an array (length, pop, splice, shift)
+
+use length = 0 or new init [link](http://jsben.ch/hyj65)
+
+```js
+var testArray = [83, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28, 93, 27, 29, 2828, 234, 23, 56, 32, 56, 67, 77, 32, 45, 93, 17, 28, 83, 62, 99, 36, 28];
+
+testArray.length = 0;
+
+testArray = [];
+
+```
+![](img/36AF8A85-2AA8-4FE0-898D-1591477225E6.png)
+
+
+##### check if var is array
+
+use isArray or cunstructor  [link](http://jsben.ch/wQ9RU)
+
+```js
+var testArray = [29, 29 , 28, 39, 38, 2828, 28, 993, 3];
+var testVar = "hello";
+
+var result;
+
+if (Array.isArray(testArray)) result = true;
+if (Array.isArray(testVar)) result = true;
+
+if (testArray.constructor === Array) result = true;
+if (testVar.constructor === Array) result = true;
+```
+![](img/BC912346-3C44-4737-8DC3-16A67373483C.png)
+
+##### 
+
+use [link](http://jsben.ch/wQ9RU)
+
 ```js
 
 ```
-worng result
-![](img/C8227164-B8C0-4E65-B0B8-A1962B0E4E58.png)
+![](img/.png)
 
-##### JS loop
+##### 
+
+use [link](http://jsben.ch/wQ9RU)
+
 ```js
 
 ```
-worng result
-![](img/C8227164-B8C0-4E65-B0B8-A1962B0E4E58.png)
-
-##### JS loop
-```js
-
-```
-worng result
-![](img/C8227164-B8C0-4E65-B0B8-A1962B0E4E58.png)
-
-
-
-##### PieChartLabels
-Inspired by [Pie charts labels](http://bl.ocks.org/dbuezas/9306799)
-
-![](preview/pieLabel.png)
-
-##### Radia
-Inspired by [基于D3.js的雷达图的实现](http://xgfe.github.io/2015/11/24/chenwubai/d3-basicCharts-radar/)
-
-![](preview/radia.png)
+![](img/.png)
