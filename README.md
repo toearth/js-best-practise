@@ -1,7 +1,7 @@
 # js-best-practise
 The result is based on [jsben](http://jsben.ch/browse).
 
-During the test, I got different result in different result, in one benchmark. Some times the chart even has some error.
+During the test, I got different result in different web brower, in one benchmark. Some times the chart even has some error.
 
 worng result
 
